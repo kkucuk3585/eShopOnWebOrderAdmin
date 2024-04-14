@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.eShopWeb.ApplicationCore.Entities;
+using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
 using Microsoft.Extensions.Logging;
 
 namespace Microsoft.eShopWeb.Infrastructure.Data;
@@ -41,6 +42,14 @@ public class CatalogContextSeed
             {
                 await catalogContext.CatalogItems.AddRangeAsync(
                     GetPreconfiguredItems());
+
+                await catalogContext.SaveChangesAsync();
+            }
+
+            if (!await catalogContext.Orders.AnyAsync())
+            {
+                await catalogContext.Orders.AddRangeAsync(
+                    GetPreconfiguredOrders());
 
                 await catalogContext.SaveChangesAsync();
             }
@@ -96,6 +105,15 @@ public class CatalogContextSeed
                 new(3,2, ".NET Foundation Sheet", ".NET Foundation Sheet", 12, "http://catalogbaseurltobereplaced/images/products/10.png"),
                 new(3,2, "Cup<T> Sheet", "Cup<T> Sheet", 8.5M, "http://catalogbaseurltobereplaced/images/products/11.png"),
                 new(2,5, "Prism White TShirt", "Prism White TShirt", 12, "http://catalogbaseurltobereplaced/images/products/12.png")
+            };
+    }
+
+    static IEnumerable<Order> GetPreconfiguredOrders()
+    {
+        return new List<Order>
+            {
+                new("admin@microsoft.com",new Address("a","b","c","d","e"), [new OrderItem(new CatalogItemOrdered(1, ".NET Bot Black Sweatshirt", "http://catalogbaseurltobereplaced/images/products/1.png"), 19.5M, 2) ]),
+                new("demouser@microsoft.com",new Address("a","b","c","d","e"), [new OrderItem(new CatalogItemOrdered(1, ".NET Black & White Mug", "http://catalogbaseurltobereplaced/images/products/2.png"), 8.50M, 1) ])
             };
     }
 }

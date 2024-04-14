@@ -4,12 +4,17 @@ using Microsoft.eShopWeb.PublicApi.CatalogBrandEndpoints;
 using Microsoft.eShopWeb.PublicApi.CatalogItemEndpoints;
 using Microsoft.eShopWeb.PublicApi.CatalogTypeEndpoints;
 
+using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+using Microsoft.eShopWeb.PublicApi.OrdersEndpoints;
+
 namespace Microsoft.eShopWeb.PublicApi;
 
 public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<Order, OrdersDto>();
+
         CreateMap<CatalogItem, CatalogItemDto>();
         CreateMap<CatalogType, CatalogTypeDto>()
             .ForMember(dto => dto.Name, options => options.MapFrom(src => src.Type));

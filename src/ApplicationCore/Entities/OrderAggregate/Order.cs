@@ -19,6 +19,7 @@ public class Order : BaseEntity, IAggregateRoot
         _orderItems = items;
     }
 
+    public int Status { get; set; } = 0;
     public string BuyerId { get; private set; }
     public DateTimeOffset OrderDate { get; private set; } = DateTimeOffset.Now;
     public Address ShipToAddress { get; private set; }
