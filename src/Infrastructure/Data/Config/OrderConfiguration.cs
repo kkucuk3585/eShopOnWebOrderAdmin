@@ -41,9 +41,9 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         });
 
         builder.Navigation(x => x.ShipToAddress).IsRequired();
-    }
 
-    // Status config added
-    builder.Property(x => x.Status)
-            .IsRequired(true);
+        // Status config added
+        builder.Property(x => x.Status)
+                .IsRequired(true);
+    }
 }
