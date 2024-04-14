@@ -113,7 +113,6 @@
 
     [Parameter]
     public EventCallback<string> OnSaveClick { get; set; }
-    int sayac = 0;
 
     public async Task Open(int id)
     {
@@ -153,7 +152,6 @@
 
     private void GeneretaApproveBtn()
     {
-        sayac++;
         if (_item.Status == 1)
         {
             _approveBtnType = "btn-danger";
