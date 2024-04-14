@@ -112,8 +112,8 @@ public class CatalogContextSeed
     {
         return new List<Order>
             {
-                new("admin@microsoft.com",new Address("a","b","c","d","e"), [new OrderItem(new CatalogItemOrdered(1, ".NET Bot Black Sweatshirt", "http://catalogbaseurltobereplaced/images/products/1.png"), 19.5M, 2) ]),
-                new("demouser@microsoft.com",new Address("a","b","c","d","e"), [new OrderItem(new CatalogItemOrdered(1, ".NET Black & White Mug", "http://catalogbaseurltobereplaced/images/products/2.png"), 8.50M, 1) ])
+                new("admin@microsoft.com",new Address("a","b","c","d","e"), [new OrderItem(new CatalogItemOrdered(1, ".NET Bot Black Sweatshirt", "/images/products/1.png"), 19.5M, 2) ]),
+                new("demouser@microsoft.com",new Address("a","b","c","d","e"), [new OrderItem(new CatalogItemOrdered(1, ".NET Black & White Mug", "/images/products/2.png"), 8.50M, 1) ])
             };
     }
 }
